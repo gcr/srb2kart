@@ -14,6 +14,7 @@ if(${SRB2_CONFIG_SDL2_USEMIXER})
 		endif()
 	else()
 		find_package(SDL2_mixer)
+		find_package(SDL2_MIXER)
 	endif()
 	if(${SDL2_MIXER_FOUND})
 		set(SRB2_HAVE_MIXER ON)
@@ -146,8 +147,8 @@ if(${SDL2_FOUND})
 		find_library(CORE_LIB CoreFoundation)
 		target_link_libraries(SRB2SDL2 PRIVATE
 			${CORE_LIB}
-			SDL2
-			SDL2_mixer
+            ${SDL2_LIBRARIES}
+            ${SDL2_MIXER_LIBRARIES}
 			${GME_LIBRARIES}
 			${PNG_LIBRARIES}
 			${ZLIB_LIBRARIES}

@@ -2976,7 +2976,6 @@ static void I_ShutdownTimer(void)
 	}
 }
 #else
-#ifndef __MACH__
 struct timespec clk_basetime;
 
 static int TimeMillis(void)
@@ -2993,7 +2992,6 @@ static int TimeMillis(void)
 
 	return ms;
 }
-#endif/*__MACH__*/
 
 //
 // I_GetTime
@@ -3017,7 +3015,6 @@ tic_t I_GetTime (void)
 }
 #endif
 
-#ifndef __MACH__
 fixed_t I_GetFracTime(void)
 {
 	return TimeMillis() % (1000/NEWTICRATE) * (FRACUNIT / NEWTICRATE);
@@ -3027,7 +3024,6 @@ UINT16 I_GetFrameReference(UINT16 fps)
 {
 	return (TimeMillis() % 1000) * fps / 1000;
 }
-#endif/*__MACH__*/
 
 //
 //I_StartupTimer
